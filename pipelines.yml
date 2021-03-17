@@ -1,11 +1,11 @@
 apiVersion: v1.1 #Does this one need to be there?
 resources:
-#  - name: dtz_build_info
-#    type: BuildInfo
-#    configuration:
-#     sourceArtifactory: Artifactory
-#      buildName: Sandbox - DevOps Test Zone Stager - Generate Release Package
-#      buildNumber: 1
+  - name: dtz_build_info
+    type: BuildInfo
+    configuration:
+     sourceArtifactory: Artifactory
+      buildName: Sandbox - DevOps Test Zone Stager - Generate Release Package
+      buildNumber: 1
   - name: johnc_release_bundle
     type: ReleaseBundle
     configuration:
@@ -39,9 +39,9 @@ pipelines:
           dryRun: false
           sign: false
           description: Creating the Release Bundle
-          #inputResources:
-            #- name: dtz_build_info
-              #trigger: true
+          inputResources:
+            - name: dtz_build_info
+              trigger: false
             #  trigger: false
           outputResources:
             - name: johnc_release_bundle
