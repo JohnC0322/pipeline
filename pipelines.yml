@@ -6,19 +6,19 @@ resources:
 #     sourceArtifactory: Artifactory
 #      buildName: Sandbox - DevOps Test Zone Stager - Generate Release Package
 #      buildNumber: 1
-  - name: release_bundle
+  - name: johnc_release_bundle
     type: ReleaseBundle
     configuration:
       sourceDistribution: Distribution
       name: DevOps_Test_Zone
       version: 1.0.1
-  - name: signed_bundle
+  - name: johnc_signed_bundle
     type: ReleaseBundle
     configuration:
       sourceDistribution: Distribution
       name: DevOps_Test_Zone
       version: 1.0.1
-  - name: distribution_rules
+  - name: johnc_distribution_rules
     type: DistributionRule
     configuration:
       sourceDistribution: Distribution
@@ -44,18 +44,18 @@ pipelines:
               #trigger: true
               trigger: false
           outputResources:
-            - name: release_bundle
+            - name: johnc_release_bundle
   - name: sign
     type: SignReleaseBundle
     configuration:
       inputResources:
-        - name: release_bundle
+        - name: johnc_release_bundle
       outputResources:
-        - name: signed_bundle
+        - name: johnc_signed_bundle
   - name: distribute
     type: DistributeReleaseBundle
     configuration:
       dryRun: false
       inputResources:
-        - name: signed_bundle
-        - name: distribution_rules
+        - name: johnc_signed_bundle
+        - name: johnc_distribution_rules
