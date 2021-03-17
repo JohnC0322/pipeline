@@ -35,27 +35,21 @@ pipelines:
         type: CreateReleaseBundle
         configuration:
           releaseBundleName: DevOps_Test_Zone
-          releaseBundleVersion: 1.0.${res_dtz_build_info_buildNumber}
+          releaseBundleVersion: 1.0.0
           dryRun: false
           sign: false
           description: Creating the Release Bundle
-          inputResources:
-            - name: dtz_build_info
+          #inputResources:
+            #- name: dtz_build_info
               #trigger: true
-              trigger: false
+            #  trigger: false
           outputResources:
             - name: johnc_release_bundle
   - name: sign
     type: SignReleaseBundle
-    configuration:
-      inputResources:
-        - name: johnc_release_bundle
-      outputResources:
-        - name: johnc_signed_bundle
   - name: distribute
     type: DistributeReleaseBundle
     configuration:
-      dryRun: false
       inputResources:
         - name: johnc_signed_bundle
         - name: johnc_distribution_rules
