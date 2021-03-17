@@ -4,7 +4,7 @@ resources:
     type: BuildInfo
     configuration:
      sourceArtifactory: Artifactory
-      buildName: Sandbox
+      buildName: "Sandbox - DevOps Test Zone Stager - Generate Release Package"
       buildNumber: 1
   - name: johnc_release_bundle
     type: ReleaseBundle
